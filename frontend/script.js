@@ -1,36 +1,34 @@
-$(document).ready(function(){
-    $("#floatingSelect").change(function(){
-    var value = $(this).val()  
-    console.log (value)
+$(document).ready(() => {
+  $("#floatingSelect").change(function() {
+    const value = $(this).val();
+    console.log(value);
 
-    if (value === "sell"){
-        //backend route to sell page (return)
+    if (value === "sell") {
+      //backend route to sell page (return)
 
-        location.href = "sell.html"
+      location.href = "sell.html";
     }
 
-    if (value === "buy"){
-        //backend route to sell page (return)
+    if (value === "buy") {
+      //backend route to sell page (return)
 
-        location.href = "buy.html"
+      location.href = "buy.html";
     }
-    });
-
-$("#submitButton").click(function(event){
-    var itemName = $("#itemName").val()
-    var description = $("#description").val()
-    var category = $("#category").val()
-    var price = $("#price").val()
-
-    var item = {
-        name: itemName, 
-        description: description,
-        category: category,
-        price: price  
-    }
-    //post new item to db
-    console.log(item)
-})
-
   });
 
+  $("#submitButton").click(() => {
+    const itemName = $("#itemName").val();
+    const description = $("#description").val();
+    const category = $("#category").val();
+    const price = $("#price").val();
+
+    const item = {
+      name: itemName,
+      description: description,
+      category: category,
+      price: price
+    };
+    //post new item to db
+    console.log(item);
+  });
+});
