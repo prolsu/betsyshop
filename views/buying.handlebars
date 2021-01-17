@@ -1,0 +1,29 @@
+<div class="container">
+
+    <div class="column">
+        <div class="columns">
+            <div class="column is-6">
+                <h1 class="title">BUYING</h1>
+
+                <h1 class="subtitle">What are you looking for?</h1>
+                <form>
+                    <input class="searching" type="text" placeholder="Enter your search here">
+                    <button class="submitBuySearch">Search</button><br><br>
+                </form>
+                <button class="home">Return Home</button>
+            </div>
+
+            <div class="column is-6">
+                <ul>
+                    {{!-- content from db here --}}
+                    {{#each Selling}}
+                        {{#if item}}
+                            {{>buy-block}}
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
