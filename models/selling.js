@@ -5,10 +5,8 @@ module.exports = function(sequelize, DataTypes) {
       item: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         validate: {
-          len: [1],
-          isAlphanumeric: true
+          len: [1]
         }
       },
       description: {
@@ -22,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
-          isAlpha: true
+          len: [1]
         }
       },
       price: {
