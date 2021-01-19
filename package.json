@@ -1,5 +1,5 @@
 {
-  "name": "1-Passport-Example",
+  "name": "1-passport-example",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -11,7 +11,7 @@
     "watch": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nick, Pedro, Maria",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "2.4.3",
@@ -29,7 +29,15 @@
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",
-    "mocha": "^5.2.0",
+    "mocha": "^8.2.1",
     "prettier": "^1.13.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prolsu/project2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prolsu/project2/issues"
+  },
+  "homepage": "https://github.com/prolsu/project2#readme"
 }
