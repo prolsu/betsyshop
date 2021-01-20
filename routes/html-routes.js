@@ -18,7 +18,7 @@ module.exports = function(app) {
     // if (req.user) {
     //   res.redirect("/home");
     // }
-    res.render("signup");
+    res.render("login");
   });
 
   app.get("/home", (req, res) => {
