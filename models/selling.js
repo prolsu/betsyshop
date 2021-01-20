@@ -29,6 +29,16 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
           isDecimal: true
         }
+      },
+      status: {
+        type: DataTypes.BOOLEAN,
+        default: true
+      },
+      seller: {
+        type: DataTypes.STRING,
+        validate: {
+          isEmail: true
+        }
       }
     },
     {
