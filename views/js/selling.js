@@ -14,7 +14,9 @@ $(document).ready(() => {
         .trim(),
       price: $(".price")
         .val()
-        .trim()
+        .trim(),
+      status: true,
+      seller: $(".member-name").val()
     };
     if (
       !newItemToSell.item ||
