@@ -1,8 +1,10 @@
 $(document).ready(() => {
+  $(document).on("click", ".buyBtn", buyListing);
+
   $(".submitBuySearch").on("click", event => {
     event.preventDefault();
 
-    const searchForThis = $(".searching")
+    const searchForThis = $("#searching")
       .val()
       .trim();
 
@@ -13,16 +15,40 @@ $(document).ready(() => {
     });
 
     console.log(`Item Searched: ${searchForThis}`);
-    location.replace(`/buying/${searchForThis}`);
+    window.location.replace(`/buying/${searchForThis}`);
   });
 
-  $(".buyBtn").on("click", event => {
-    event.stopPropagation();
-    console.log("Item Bought!");
-    //item needs to be removed from the db with a http delete request
-  });
+  function buyListing() {
+    const listingId = $(this)
+      .parent()
+      .data().id;
 
-  $(".home").on("click", () => {
+    const sellerEmail = $(this)
+      .prev()
+      .text();
+
+    const sellerItem = $(this)
+      .prev()
+      .prev()
+      .prev()
+      .prev()
+      .prev()
+      .prev()
+      .text();
+
+    const itemInfo = {
+      email: sellerEmail,
+      item: sellerItem
+    };
+    $.ajax(`/api/buying/${listingId}`, {
+      type: "PUT",
+      data: itemInfo
+    }).then(() => {
+      window.location.reload();
+    });
+  }
+
+  $("#home").on("click", () => {
     window.location.replace("/home");
   });
 });

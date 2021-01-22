@@ -1,19 +1,87 @@
 <div class="container">
     <div class="column">
-        <h1 class="title">SELLING</h1>
-
-        <h1 class="subtitle">What are you selling?</h1>
-        <div>
-            <form>
-                <input class="item" type="text" placeholder="Item"><br>
-                <input class="description" type="text" placeholder="Description"><br>
-                <input class="category" type="text" placeholder="Category"><br>
-                <input class="price" type="text" placeholder="Price"><br>
-
-                <button class="submitSell">Sell It!</button>
-            </form>
+        <div class="column">
+            <div class="column is-12">
+                <div class="box">
+                    <div class="content">
+                        <h1 class="subtitle has-text-centered">What are you selling?</h1>
+                        <div>
+                            <form>
+                                <div class="select">
+                                    <select class="category">
+                                        <option>Category</option>
+                                        <option>Car</option>
+                                        <option>Clothes</option>
+                                        <option>Miscellaneous</option>
+                                        <option>Home Items</option>
+                                    </select>
+                                </div><br><br>
+                                <input class="item input" type="text" placeholder="Item"><br><br>
+                                <div class="field">
+                                    <input class="item input description" type="text" placeholder="Description"><br><br>
+                                    <div class="field">
+                                        <input class="item input price" type="text" placeholder="Price"><br><br>
+                                    </div>
+                                </div>
+                                <button class="submitSell button">Sell It</button>
+                            </form><br>
+                            <button id="home" class="button">Return Home</button>
+                        </div>
+                    </div>
+                </div>
+                {{!-- --}}
+                {{!-- <nav class="level is-mobile">
+                    <div class="level-left">
+                        <a class="level-item" aria-label="reply">
+                            <span class="icon is-small">
+                                <i class="fas fa-reply" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                        <a class="level-item" aria-label="retweet">
+                            <span class="icon is-small">
+                                <i class="fas fa-retweet" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                        <a class="level-item" aria-label="like">
+                            <span class="icon is-small">
+                                <i class="fas fa-heart" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    </div>
+                </nav> --}}
+                {{!-- --}}
+            </div>
+            <div class="column is-12">
+                <div class="columns">
+                    <div class="column">
+                        <div class="box">
+                            <h1 class="subtitle">Active Listings for <span class="member-name subtitle"></span></h1><hr>
+                            <ul>
+                                {{!-- content from db here --}}
+                                {{#each Listings}}
+                                {{#if active}}
+                                {{>sell-block}}
+                                {{/if}}
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="box">
+                            <h1 class="subtitle">Sold Items</h1><hr>
+                            {{!-- we could add all-time earnings here --}}
+                            <ul>
+                                {{!-- content from db here --}}
+                                {{#each Listings}}
+                                {{#unless active}}
+                                {{>sell-block}}
+                                {{/unless}}
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button class="home">Return Home</button>
     </div>
-
 </div>
