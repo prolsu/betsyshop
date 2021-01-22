@@ -160,8 +160,8 @@ module.exports = function(app) {
       const mailOptions = {
         from: "betsyecomm@gmail.com",
         to: sellerEmail,
-        subject: "You're item sold!",
-        text: `Congrats! Your '${sellerItem}' sold!`
+        subject: "Your item sold!",
+        text: `Cha Ching! Your '${sellerItem}' sold!`
       };
       transporter.sendMail(mailOptions, (err, info) => {
         if (err) {
