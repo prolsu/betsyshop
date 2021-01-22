@@ -6,8 +6,4 @@ $(document).ready(() => {
   $(".sell").on("click", () => {
     window.location.replace("/selling");
   });
-
-  // $(".submitBuy").on("click", () => {
-  //   window.location;
-  // });
 });
