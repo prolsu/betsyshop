@@ -30,11 +30,11 @@ module.exports = function(sequelize, DataTypes) {
           isDecimal: true
         }
       },
-      status: {
+      active: {
         type: DataTypes.BOOLEAN,
         default: true
       },
-      active: {
+      seller: {
         type: DataTypes.STRING,
         validate: {
           isEmail: true
