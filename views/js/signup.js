@@ -1,16 +1,14 @@
 $(document).ready(() => {
-  $(".signup").on("submit", event => {
+  const signUp = $("#signup");
+  const emailInput = $("#email-input");
+  const passwordInput = $("#password-input");
+
+  signUp.on("submit", event => {
     event.preventDefault();
-    const emailInput = $("#email-input")
-      .val()
-      .trim();
-    const passwordInput = $("#password-input")
-      .val()
-      .trim();
 
     const userData = {
-      email: emailInput,
-      password: passwordInput
+      email: emailInput.val().trim(),
+      password: passwordInput.val().trim()
     };
 
     if (!userData.email || !userData.password) {
@@ -27,7 +25,6 @@ $(document).ready(() => {
       password: password
     })
       .then(() => {
-        // console.log(data);
         window.location.replace("/home");
         // If there's an error, handle it by throwing up a bootstrap alert
       })

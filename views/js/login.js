@@ -1,18 +1,14 @@
 $(document).ready(() => {
-  $(".login").on("submit", event => {
+  const logIn = $("#login");
+  const emailInput = $("#email-input");
+  const passwordInput = $("#password-input");
+
+  logIn.on("submit", event => {
     event.preventDefault();
 
-    // Getting references to our form and inputs
-    const emailInput = $("#email-input")
-      .val()
-      .trim();
-    const passwordInput = $("#password-input")
-      .val()
-      .trim();
-
     const userData = {
-      email: emailInput,
-      password: passwordInput
+      email: emailInput.val().trim(),
+      password: passwordInput.val().trim()
     };
 
     if (!userData.email || !userData.password) {
