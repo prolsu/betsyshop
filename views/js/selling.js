@@ -1,6 +1,8 @@
 $(document).ready(() => {
   $(document).on("click", ".deleteBtn", deleteListing);
-  // $(document).on("click", ".updateBtn", updateListing);
+  $(document).on("click", ".updateBtn", updateListing);
+  $(document).on("submit", "#submitUpdate", submitUpdatedListing);
+  $(document).on("click", "#closeModal", closeModal);
 
   $(".submitSell").on("click", event => {
     event.preventDefault();
@@ -50,9 +52,76 @@ $(document).ready(() => {
     });
   }
 
-  // function updateListing() {
-  // here we update the sellers listings...
-  // }
+  function updateListing() {
+    const listingId = $(this)
+      .parent()
+      .data().id;
+    const listingItem = $(this)
+      .prev()
+      .prev()
+      .prev()
+      .prev()
+      .text();
+    const listingDescription = $(this)
+      .prev()
+      .prev()
+      .prev()
+      .text();
+    const listingPrice = $(this)
+      .prev()
+      .prev()
+      .text();
+
+    $(".modal").addClass("is-active");
+    console.log(listingId);
+
+    $("#submitUpdate").attr("data-id", listingId);
+    $("#newItem").val(listingItem);
+    $("#newDescription").val(listingDescription);
+    $("#newPrice").val(listingPrice);
+
+    const listingCategory = $(".category").text();
+
+    if (listingCategory === "Category") {
+      alert("Please choose a new category");
+    }
+  }
+
+  function submitUpdatedListing(event) {
+    event.preventDefault();
+
+    const listingId = $("#submitUpdate").data().id;
+
+    const newItem = $("#newItem")
+      .val()
+      .trim();
+    const newDescription = $("#newDescription")
+      .val()
+      .trim();
+    const newPrice = $("#newPrice")
+      .val()
+      .trim();
+
+    const newCategory = $(".newCategory").val();
+
+    const newItemInfo = {
+      item: newItem,
+      description: newDescription,
+      price: newPrice,
+      category: newCategory
+    };
+
+    $.ajax(`/api/listings/${listingId}`, {
+      type: "PUT",
+      data: newItemInfo
+    }).then(() => {
+      window.location.reload();
+    });
+  }
+
+  function closeModal() {
+    $(".modal").removeClass("is-active");
+  }
 
   $("#home").on("click", () => {
     window.location.replace("/home");

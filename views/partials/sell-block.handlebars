@@ -3,13 +3,15 @@
     <h1 class="title">{{item}}</h1>
     <h1 class="subtitle">{{description}}</h1>
     <h1 class="subtitle">${{price}}</h1>
-    <button class="deleteBtn button">Delete Listing</button>
+    <h2 class="subtitle" style="font-weight: bolder;">Category: <span style="font-weight:300;">{{category}}</span></h2>
     <button class="updateBtn button">Update Listing</button>
+    <button class="deleteBtn button">Delete Listing</button>
     {{/if}}
 
     {{#unless active}}
     <h1 class="title">{{item}}</h1>
     <h1 class="subtitle">{{description}}</h1>
     <h1 class="subtitle">${{price}}</h1>
+    {{!-- <a>Sell one more</button> --}}
     {{/unless}}
 </li><hr>
