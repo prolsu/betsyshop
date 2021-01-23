@@ -2,7 +2,7 @@
 const { Op } = require("sequelize");
 const db = require("../models");
 const passport = require("../config/passport");
-// const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -145,31 +145,31 @@ module.exports = function(app) {
     ).then(dbBought => {
       res.json(dbBought);
 
-      //   console.log(`Sellers email: ${req.body.email}`);
-      //   const sellerEmail = req.body.email;
-      //   const sellerItem = req.body.item;
+      console.log(`Sellers email: ${req.body.email}`);
+      const sellerEmail = req.body.email;
+      const sellerItem = req.body.item;
 
-      //   const transporter = nodemailer.createTransport({
-      //     host: "smtp.gmail.com",
-      //     auth: {
-      //       type: "login",
-      //       user: "betsyecomm@gmail.com",
-      //       pass: "betsymiami305"
-      //     }
-      //   });
-      //   const mailOptions = {
-      //     from: "betsyecomm@gmail.com",
-      //     to: sellerEmail,
-      //     subject: "Your item sold!",
-      //     text: `Cha Ching! Your '${sellerItem}' sold!`
-      //   };
-      //   transporter.sendMail(mailOptions, (err, info) => {
-      //     if (err) {
-      //       console.log(err);
-      //     } else {
-      //       console.log(`Email sent: ${info.response}`);
-      //     }
-      //   });
+      const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        auth: {
+          type: "login",
+          user: "betsyecomm@gmail.com",
+          pass: "betsymiami305"
+        }
+      });
+      const mailOptions = {
+        from: "betsyecomm@gmail.com",
+        to: sellerEmail,
+        subject: "Your item sold!",
+        text: `Cha Ching! Your '${sellerItem}' sold!`
+      };
+      transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(`Email sent: ${info.response}`);
+        }
+      });
     });
   });
 

@@ -5,6 +5,7 @@ branches:
     - master
     - main
 cache:
+  npm: false
   directories:
     - node_modules
 services:
