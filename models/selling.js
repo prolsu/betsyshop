@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.BOOLEAN,
         default: true
       },
-      seller: {
+      active: {
         type: DataTypes.STRING,
         validate: {
           isEmail: true
