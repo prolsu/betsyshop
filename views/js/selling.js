@@ -1,4 +1,7 @@
 $(document).ready(() => {
+  $(document).on("click", ".deleteBtn", deleteListing);
+  // $(document).on("click", ".updateBtn", updateListing);
+
   $(".submitSell").on("click", event => {
     event.preventDefault();
 
@@ -15,8 +18,7 @@ $(document).ready(() => {
       price: $(".price")
         .val()
         .trim(),
-      status: true,
-      seller: $(".member-name").val()
+      seller: $(".member-name").text()
     };
     if (
       !newItemToSell.item ||
@@ -35,7 +37,24 @@ $(document).ready(() => {
     }
   });
 
-  $(".home").on("click", () => {
+  function deleteListing() {
+    const listingId = $(this)
+      .parent()
+      .data().id;
+    // console.log(listingId);
+    $.ajax({
+      method: "DELETE",
+      url: `/api/selling/${listingId}`
+    }).then(() => {
+      window.location.reload();
+    });
+  }
+
+  // function updateListing() {
+  // here we update the sellers listings...
+  // }
+
+  $("#home").on("click", () => {
     window.location.replace("/home");
   });
 });

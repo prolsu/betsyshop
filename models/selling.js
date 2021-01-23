@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
           isDecimal: true
         }
       },
-      status: {
+      active: {
         type: DataTypes.BOOLEAN,
         default: true
       },
