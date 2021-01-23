@@ -31,10 +31,16 @@ module.exports = function(app) {
   });
 
   app.get("/buying", (req, res) => {
-    res.render("buying");
+    if (req.user) {
+      res.render("buying");
+    }
+    res.render("login");
   });
 
   app.get("/selling", (req, res) => {
-    res.render("selling");
+    if (req.user) {
+      res.redirect("/selling/listings");
+    }
+    res.render("login");
   });
 };

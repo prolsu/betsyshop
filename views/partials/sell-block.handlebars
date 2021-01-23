@@ -1,0 +1,15 @@
+<li data-id="{{id}}">
+    {{#if active}}
+    <h1 class="title">{{item}}</h1>
+    <h1 class="subtitle">{{description}}</h1>
+    <h1 class="subtitle">${{price}}</h1>
+    <button class="deleteBtn button">Delete Listing</button>
+    <button class="updateBtn button">Update Listing</button>
+    {{/if}}
+
+    {{#unless active}}
+    <h1 class="title">{{item}}</h1>
+    <h1 class="subtitle">{{description}}</h1>
+    <h1 class="subtitle">${{price}}</h1>
+    {{/unless}}
+</li><hr>
