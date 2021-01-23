@@ -27,6 +27,7 @@
                                 <button class="submitSell button">Sell It</button>
                             </form><br>
                             <button id="home" class="button">Return Home</button>
+                            <a style="float: right;" href="/logout">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -56,7 +57,8 @@
                 <div class="columns">
                     <div class="column">
                         <div class="box">
-                            <h1 class="subtitle">Active Listings for <span class="member-name subtitle"></span></h1><hr>
+                            <h1 class="subtitle">Active Listings for <span class="member-name subtitle"></span></h1>
+                            <hr>
                             <ul>
                                 {{!-- content from db here --}}
                                 {{#each Listings}}
@@ -69,7 +71,8 @@
                     </div>
                     <div class="column">
                         <div class="box">
-                            <h1 class="subtitle">Sold Items</h1><hr>
+                            <h1 class="subtitle">Sold Items</h1>
+                            <hr>
                             {{!-- we could add all-time earnings here --}}
                             <ul>
                                 {{!-- content from db here --}}
