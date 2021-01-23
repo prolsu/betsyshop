@@ -10,24 +10,19 @@ module.exports = function(app) {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
-    res.json({
-      email: req.user.email,
-      id: req.user.id
-    });
+    res.json(req.user);
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
-    console.log(req.body);
     db.User.create({
       email: req.body.email,
       password: req.body.password
     })
       .then(() => {
-        res.status(202).end();
-        res.redirect("/home");
+        res.redirect(307, "/api/login");
       })
       .catch(err => {
         res.status(401).json(err);
@@ -174,12 +169,22 @@ module.exports = function(app) {
   });
 
   //to update an active listing
-  app.put("/api/selling", (req, res) => {
-    db.Selling.update(req.body, {
-      where: {
-        id: req.body.id
+  app.put("/api/listings/:id", (req, res) => {
+    const { id } = req.params;
+    console.log(req.body, req.params.id);
+    db.Selling.update(
+      {
+        item: req.body.item,
+        description: req.body.description,
+        price: req.body.price,
+        category: req.body.category
+      },
+      {
+        where: {
+          id: id
+        }
       }
-    }).then(dbUpdate => {
+    ).then(dbUpdate => {
       res.json(dbUpdate);
     });
   });

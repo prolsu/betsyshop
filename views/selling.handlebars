@@ -9,13 +9,20 @@
                             <form>
                                 <div class="select">
                                     <select class="category">
-                                        <option>Category</option>
-                                        <option>Car</option>
-                                        <option>Clothes</option>
+                                        <option>Appliances</option>
+                                        <option>Apps &amp; Games</option>
+                                        <option>Automotive &amp; Parts</option>
+                                        <option>Baby</option>
+                                        <option>Beauty</option>
+                                        <option>Books</option>
+                                        <option>Cellphones &amp; Accessories</option>
+                                        <option>Computer</option>
+                                        <option>Home &amp; Decor</option>
+                                        <option>Sport &amp; Outdor</option>
                                         <option>Miscellaneous</option>
-                                        <option>Home Items</option>
                                     </select>
-                                </div><br><br>
+                                </div>
+                                <br><br>
                                 <input class="item input" type="text" placeholder="Item"><br><br>
                                 <div class="field">
                                     <input class="item input description" type="text" placeholder="Description"><br><br>
@@ -30,27 +37,6 @@
                         </div>
                     </div>
                 </div>
-                {{!-- --}}
-                {{!-- <nav class="level is-mobile">
-                    <div class="level-left">
-                        <a class="level-item" aria-label="reply">
-                            <span class="icon is-small">
-                                <i class="fas fa-reply" aria-hidden="true"></i>
-                            </span>
-                        </a>
-                        <a class="level-item" aria-label="retweet">
-                            <span class="icon is-small">
-                                <i class="fas fa-retweet" aria-hidden="true"></i>
-                            </span>
-                        </a>
-                        <a class="level-item" aria-label="like">
-                            <span class="icon is-small">
-                                <i class="fas fa-heart" aria-hidden="true"></i>
-                            </span>
-                        </a>
-                    </div>
-                </nav> --}}
-                {{!-- --}}
             </div>
             <div class="column is-12">
                 <div class="columns">
@@ -71,6 +57,7 @@
                     <div class="column">
                         <div class="box">
                             <h1 class="subtitle">Sold Items</h1>
+                            {{!-- <button class="button">Clear History</button> --}}
                             <hr>
                             {{!-- we could add all-time earnings here --}}
                             <ul>
@@ -84,6 +71,39 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Update Listing</p>
+                    <button id="closeModal" class="button is-small">Cancel</button>
+                </header>
+                <section class="modal-card-body">
+                    <form id="submitUpdate">
+                        {{!-- listing info to update here --}}
+                        <input id="newItem" class="input" placeholder="item"><br><br>
+                        <input id="newDescription" class="input" placeholder="description"><br><br>
+                        <input id="newPrice" class="input" placeholder="price"><br><br>
+                        <div class="select">
+                            <select class="newCategory">
+                                <option>Appliances</option>
+                                <option>Apps &amp; Games</option>
+                                <option>Automotive &amp; Parts</option>
+                                <option>Baby</option>
+                                <option>Beauty</option>
+                                <option>Books</option>
+                                <option>Cellphones &amp; Accessories</option>
+                                <option>Computer</option>
+                                <option>Home &amp; Decor</option>
+                                <option>Sport &amp; Outdor</option>
+                                <option>Miscellaneous</option>
+                            </select>
+                        </div>
+                        <button class="button is-success" style="float: right;">Save changes</button>
+                    </form>
+                </section>
             </div>
         </div>
     </div>
