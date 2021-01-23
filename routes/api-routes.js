@@ -2,7 +2,7 @@
 const { Op } = require("sequelize");
 const db = require("../models");
 const passport = require("../config/passport");
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
