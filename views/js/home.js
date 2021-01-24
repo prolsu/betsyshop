@@ -1,9 +1,17 @@
 $(document).ready(() => {
   $(".buy").on("click", () => {
-    window.location.replace("/buying");
+    $.ajax("/buying", {
+      type: "GET"
+    }).then(() => {
+      window.location.replace("/buying");
+    });
   });
 
   $(".sell").on("click", () => {
-    window.location.replace("/selling");
+    $.ajax("/selling", {
+      type: "GET"
+    }).then(() => {
+      window.location.replace("/selling");
+    });
   });
 });
