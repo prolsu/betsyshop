@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.get("/", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect("/home");
+      res.render("home");
     }
     res.render("signup");
   });
@@ -12,7 +12,7 @@ module.exports = function(app) {
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect("/home");
+      res.render("home");
     }
     res.render("login");
   });
@@ -25,22 +25,14 @@ module.exports = function(app) {
 
   app.get("/home", (req, res) => {
     if (req.user) {
-      res.render("/home");
+      res.render("home");
     }
     res.render("login");
   });
 
-  app.get("/buyings", (req, res) => {
+  app.get("/buying", (req, res) => {
     if (req.user) {
       res.render("buying");
     }
-    res.render("login");
-  });
-
-  app.get("/sellings", (req, res) => {
-    if (req.user) {
-      res.redirect("/selling");
-    }
-    res.render("login");
   });
 };

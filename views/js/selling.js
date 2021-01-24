@@ -3,6 +3,7 @@ $(document).ready(() => {
   $(document).on("click", ".updateBtn", updateListing);
   $(document).on("submit", "#submitUpdate", submitUpdatedListing);
   $(document).on("click", "#closeModal", closeModal);
+  $(document).on("click", "#home", takeMeHome);
 
   $(".submitSell").on("click", () => {
     const newItemToSell = {
@@ -121,7 +122,7 @@ $(document).ready(() => {
     $(".modal").removeClass("is-active");
   }
 
-  $("#home").on("click", () => {
+  function takeMeHome() {
     window.location.replace("/home");
-  });
+  }
 });

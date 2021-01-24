@@ -29,12 +29,6 @@ module.exports = function(app) {
       });
   });
 
-  // Route for logging user out
-  app.get("/logout", (req, res) => {
-    req.logout();
-    res.redirect("/");
-  });
-
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
@@ -104,30 +98,34 @@ module.exports = function(app) {
 
   //will render all active listings
   app.get("/selling", (req, res) => {
-    db.Selling.findAll({
-      where: {
-        seller: req.user.email
-      }
-    })
-      .then(userListings => {
-        if (userListings) {
-          // console.log(userListings);
-          const activeListings = [];
-          // eslint-disable-next-line prettier/prettier
-          userListings.forEach(listing => activeListings.push(listing.dataValues));
-
-          // console.log(activeListings);
-          const currentResults = {
-            Listings: activeListings
-          };
-          res.render("selling", currentResults);
-        } else {
-          res.render("selling");
+    if (req.user) {
+      db.Selling.findAll({
+        where: {
+          seller: req.user.email
         }
       })
-      .catch(err => {
-        res.status(401).json(err);
-      });
+        .then(userListings => {
+          if (userListings) {
+            // console.log(userListings);
+            const activeListings = [];
+            // eslint-disable-next-line prettier/prettier
+            userListings.forEach(listing => activeListings.push(listing.dataValues));
+
+            // console.log(activeListings);
+            const currentResults = {
+              Listings: activeListings
+            };
+            res.render("selling", currentResults);
+          } else {
+            res.render("selling");
+          }
+        })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    } else {
+      res.render("login");
+    }
   });
 
   //to delete an item that is no longer for sale
@@ -136,9 +134,13 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
-    }).then(dbDelete => {
-      res.json(dbDelete);
-    });
+    })
+      .then(dbDelete => {
+        res.json(dbDelete);
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
   });
 
   //when an item is bought, its status is updated to false
@@ -173,11 +175,7 @@ module.exports = function(app) {
           text: `Cha Ching! Your '${sellerItem}' sold!`
         };
         transporter.sendMail(mailOptions, (err, info) => {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log(`Email sent: ${info.response}`);
-          }
+          err ? console.log(err) : console.log(`Email sent: ${info.response}`);
         });
       })
       .catch(err => {
@@ -210,6 +208,7 @@ module.exports = function(app) {
       });
   });
 
+  // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");

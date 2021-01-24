@@ -1,7 +1,9 @@
 $(document).ready(() => {
+  $(document).on("click", ".submitBuySearch", searchThisItem);
   $(document).on("click", ".buyBtn", buyListing);
+  $(document).on("click", "#home", takeMeHome);
 
-  $(".submitBuySearch").on("click", event => {
+  function searchThisItem(event) {
     event.preventDefault();
 
     const searchForThis = $("#searching")
@@ -16,7 +18,7 @@ $(document).ready(() => {
 
     console.log(`Item Searched: ${searchForThis}`);
     window.location.replace(`/buying/${searchForThis}`);
-  });
+  }
 
   function buyListing() {
     const listingId = $(this)
@@ -48,7 +50,7 @@ $(document).ready(() => {
     });
   }
 
-  $("#home").on("click", () => {
+  function takeMeHome() {
     window.location.replace("/home");
-  });
+  }
 });

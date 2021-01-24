@@ -1,9 +1,12 @@
 $(document).ready(() => {
-  $(".buy").on("click", () => {
-    window.location.replace("/buyings");
-  });
+  $(document).on("click", ".buy", buyersPage);
+  $(document).on("click", ".sell", sellersPage);
 
-  $(".sell").on("click", () => {
-    window.location.replace("/sellings");
-  });
+  function buyersPage() {
+    window.location.replace("/buying");
+  }
+
+  function sellersPage() {
+    window.location.replace("/selling");
+  }
 });
