@@ -31,8 +31,8 @@ module.exports = function(sequelize, DataTypes) {
         }
       },
       active: {
-        type: DataTypes.BOOLEAN,
-        default: true
+        type: DataTypes.INTEGER,
+        default: 1
       },
       seller: {
         type: DataTypes.STRING,

@@ -114,10 +114,9 @@ module.exports = function(app) {
           // console.log(userListings);
           const activeListings = [];
           // eslint-disable-next-line prettier/prettier
-          userListings.forEach(listing => activeListings.push(listing.dataValues)
-          );
+          userListings.forEach(listing => activeListings.push(listing.dataValues));
 
-          console.log(activeListings);
+          // console.log(activeListings);
           const currentResults = {
             Listings: activeListings
           };
