@@ -25,21 +25,21 @@ module.exports = function(app) {
 
   app.get("/home", (req, res) => {
     if (req.user) {
-      res.redirect("/home");
+      res.render("/home");
     }
     res.render("login");
   });
 
-  app.get("/buying", (req, res) => {
+  app.get("/buyings", (req, res) => {
     if (req.user) {
       res.render("buying");
     }
     res.render("login");
   });
 
-  app.get("/selling", (req, res) => {
+  app.get("/sellings", (req, res) => {
     if (req.user) {
-      res.redirect("/selling");
+      res.render("selling");
     }
     res.render("login");
   });
