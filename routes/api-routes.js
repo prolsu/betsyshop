@@ -99,7 +99,7 @@ module.exports = function(app) {
   });
 
   //will render all active listings
-  app.get("/selling/listings", (req, res) => {
+  app.get("/selling", (req, res) => {
     db.Selling.findAll({
       where: {
         seller: req.user.email
