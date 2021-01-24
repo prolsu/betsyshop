@@ -4,9 +4,7 @@ $(document).ready(() => {
   $(document).on("submit", "#submitUpdate", submitUpdatedListing);
   $(document).on("click", "#closeModal", closeModal);
 
-  $(".submitSell").on("click", event => {
-    event.preventDefault();
-
+  $(".submitSell").on("click", () => {
     const newItemToSell = {
       item: $(".item")
         .val()

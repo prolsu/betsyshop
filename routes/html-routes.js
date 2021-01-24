@@ -39,7 +39,7 @@ module.exports = function(app) {
 
   app.get("/sellings", (req, res) => {
     if (req.user) {
-      res.render("selling");
+      res.redirect("/selling");
     }
     res.render("login");
   });
