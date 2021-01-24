@@ -113,9 +113,8 @@ module.exports = function(app) {
         if (userListings) {
           // console.log(userListings);
           const activeListings = [];
-          userListings.forEach(listing =>
-            // eslint-disable-next-line implicit-arrow-linebreak
-            activeListings.push(listing.dataValues)
+          // eslint-disable-next-line prettier/prettier
+          userListings.forEach(listing => activeListings.push(listing.dataValues)
           );
 
           console.log(activeListings);
@@ -124,7 +123,7 @@ module.exports = function(app) {
           };
           res.render("selling", currentResults);
         } else {
-          res.json({});
+          res.render("selling");
         }
       })
       .catch(err => {

@@ -45,14 +45,14 @@
                         <div class="box">
                             <h1 class="subtitle">Active Listings for <span class="member-name subtitle"></span></h1>
                             <hr>
-                            <ul>
+                            <div>
                                 {{!-- content from db here --}}
                                 {{#each Listings}}
                                 {{#if active}}
                                 {{>sell-block}}
                                 {{/if}}
                                 {{/each}}
-                            </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="column">
@@ -61,14 +61,14 @@
                             {{!-- <button class="button">Clear History</button> --}}
                             <hr>
                             {{!-- we could add all-time earnings here --}}
-                            <ul>
+                            <div>
                                 {{!-- content from db here --}}
                                 {{#each Listings}}
                                 {{#unless active}}
                                 {{>sell-block}}
                                 {{/unless}}
                                 {{/each}}
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
