@@ -85,17 +85,21 @@ module.exports = function(app) {
           [Op.not]: req.user.email
         }
       }
-    }).then(dbSearch => {
-      // console.log(dbSearch);
+    })
+      .then(dbSearch => {
+        // console.log(dbSearch);
 
-      const matchListings = [];
-      dbSearch.forEach(listing => matchListings.push(listing.dataValues));
+        const matchListings = [];
+        dbSearch.forEach(listing => matchListings.push(listing.dataValues));
 
-      const searchData = {
-        Buying: matchListings
-      };
-      res.render("buying", searchData);
-    });
+        const searchData = {
+          Buying: matchListings
+        };
+        res.render("buying", searchData);
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
   });
 
   //will render all active listings
@@ -104,17 +108,28 @@ module.exports = function(app) {
       where: {
         seller: req.user.email
       }
-    }).then(userListings => {
-      // console.log(userListings);
-      const activeListings = [];
-      userListings.forEach(listing => activeListings.push(listing.dataValues));
+    })
+      .then(userListings => {
+        if (userListings) {
+          // console.log(userListings);
+          const activeListings = [];
+          userListings.forEach(listing =>
+            // eslint-disable-next-line implicit-arrow-linebreak
+            activeListings.push(listing.dataValues)
+          );
 
-      console.log(activeListings);
-      const currentResults = {
-        Listings: activeListings
-      };
-      res.render("selling", currentResults);
-    });
+          console.log(activeListings);
+          const currentResults = {
+            Listings: activeListings
+          };
+          res.render("selling", currentResults);
+        } else {
+          res.json({});
+        }
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
   });
 
   //to delete an item that is no longer for sale
@@ -137,35 +152,39 @@ module.exports = function(app) {
           id: req.params.id
         }
       }
-    ).then(dbBought => {
-      res.json(dbBought);
+    )
+      .then(dbBought => {
+        res.json(dbBought);
 
-      console.log(`Sellers email: ${req.body.email}`);
-      const sellerEmail = req.body.email;
-      const sellerItem = req.body.item;
+        console.log(`Sellers email: ${req.body.email}`);
+        const sellerEmail = req.body.email;
+        const sellerItem = req.body.item;
 
-      const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        auth: {
-          type: "login",
-          user: "betsyecomm@gmail.com",
-          pass: "betsymiami305"
-        }
+        const transporter = nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          auth: {
+            type: "login",
+            user: "betsyecomm@gmail.com",
+            pass: "betsymiami305"
+          }
+        });
+        const mailOptions = {
+          from: "betsyecomm@gmail.com",
+          to: sellerEmail,
+          subject: "Your item sold!",
+          text: `Cha Ching! Your '${sellerItem}' sold!`
+        };
+        transporter.sendMail(mailOptions, (err, info) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(`Email sent: ${info.response}`);
+          }
+        });
+      })
+      .catch(err => {
+        res.status(401).json(err);
       });
-      const mailOptions = {
-        from: "betsyecomm@gmail.com",
-        to: sellerEmail,
-        subject: "Your item sold!",
-        text: `Cha Ching! Your '${sellerItem}' sold!`
-      };
-      transporter.sendMail(mailOptions, (err, info) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(`Email sent: ${info.response}`);
-        }
-      });
-    });
   });
 
   //to update an active listing
@@ -184,9 +203,13 @@ module.exports = function(app) {
           id: id
         }
       }
-    ).then(dbUpdate => {
-      res.json(dbUpdate);
-    });
+    )
+      .then(dbUpdate => {
+        res.json(dbUpdate);
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
   });
 
   app.get("/logout", (req, res) => {
