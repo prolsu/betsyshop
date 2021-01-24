@@ -4,8 +4,9 @@ $(document).ready(() => {
   $(document).on("submit", "#submitUpdate", submitUpdatedListing);
   $(document).on("click", "#closeModal", closeModal);
   $(document).on("click", "#home", takeMeHome);
+  $(document).on("submit", ".submitSell", submitListing);
 
-  $(".submitSell").on("click", () => {
+  function submitListing() {
     const newItemToSell = {
       item: $(".item")
         .val()
@@ -36,7 +37,7 @@ $(document).ready(() => {
         location.reload();
       });
     }
-  });
+  }
 
   function deleteListing() {
     const listingId = $(this)
