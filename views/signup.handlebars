@@ -4,7 +4,7 @@
         <h1 class="subtitle has-text-centered">Sign Up</h1>
         <div class="column">
             <div class="box">
-                <form id="signup" >
+                <form id="signup">
                     <div class="field">
                         <p class="control has-icons-left has-icons-right">
                             <input class="input is-medium" id="email-input" type="email" placeholder="Email">
@@ -18,7 +18,7 @@
                     </div><br>
                     <div class="field">
                         <p class="control has-icons-left">
-                            <input class="input" id="password-input" type="password" placeholder="Password">
+                            <input class="input is-medium" id="password-input" type="password" placeholder="Password">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -29,6 +29,17 @@
                 <hr>
                 <h1 class="subtitle">Log In <a href="/login">here</a></h1>
             </div>
+        </div>
+    </div>
+    <div class="modal" id="alertModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <div class="modal-card-head">
+                <button id="closeAlertModal" class="button is-medium">Log In</button>
+            </div>
+            <section id="alertContent" class="modal-card-body">
+                {{!-- alert content --}}
+            </section>
         </div>
     </div>
 </div>
