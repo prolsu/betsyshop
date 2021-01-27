@@ -13,7 +13,7 @@ html {
 }
 
 #updateModalBtn,
-#sellItBtn,
+.sellItBtn,
 .submitBuySearch,
 .buyBtn {
     background-color: rgb(106, 169, 221);
