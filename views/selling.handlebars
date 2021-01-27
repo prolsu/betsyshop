@@ -6,7 +6,7 @@
                     <div class="content">
                         <h1 class="subtitle has-text-centered">What are you selling?</h1>
                         <div>
-                            <form class="submitSell">
+                            <form id="submitSell">
                                 <div class="select">
                                     <select class="category">
                                         <option>Appliances</option>
@@ -24,12 +24,8 @@
                                 </div>
                                 <br><br>
                                 <input class="item input" type="text" placeholder="Item"><br><br>
-                                <div class="field">
-                                    <input class="description input " type="text" placeholder="Description"><br><br>
-                                    <div class="field">
-                                        <input class="price input" type="text" placeholder="Price"><br><br>
-                                    </div>
-                                </div>
+                                <input class="description input " type="text" placeholder="Description"><br><br>
+                                <input class="price input" type="number" placeholder="Price"><br><br>
                                 <button class="sellItBtn button">Sell It</button>
                             </form><br>
                             <button id="home" class="button">Return Home</button>
@@ -101,7 +97,8 @@
                                 <option>Miscellaneous</option>
                             </select>
                         </div>
-                        <button id="updateModalBtn" class="button is-success" style="float: right;">Save changes</button>
+                        <button id="updateModalBtn" class="button is-success" style="float: right;">Save
+                            changes</button>
                     </form>
                 </section>
             </div>

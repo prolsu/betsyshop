@@ -4,7 +4,7 @@ $(document).ready(() => {
   $(document).on("submit", "#submitUpdate", submitUpdatedListing);
   $(document).on("click", "#closeModal", closeModal);
   $(document).on("click", "#home", takeMeHome);
-  $(document).on("submit", ".submitSell", submitListing);
+  $(document).on("submit", "#submitSell", submitListing);
 
   function submitListing() {
     const newItemToSell = {
