@@ -72,19 +72,27 @@ $(document).ready(() => {
       .prev()
       .text();
 
+    const listingCategory = $(this)
+      .prev()
+      .text();
+
+    let modalListingPrice = "";
+    for (let i = 1; i < listingPrice.length; i++) {
+      modalListingPrice += listingPrice[i];
+    }
+
+    let modalListingCategory = "";
+    for (let i = 10; i < listingCategory.length; i++) {
+      modalListingCategory += listingCategory[i];
+    }
+
     $(".modal").addClass("is-active");
-    console.log(listingId);
 
     $("#submitUpdate").attr("data-id", listingId);
     $("#newItem").val(listingItem);
     $("#newDescription").val(listingDescription);
-    $("#newPrice").val(listingPrice);
-
-    const listingCategory = $(".category").text();
-
-    if (listingCategory === "Category") {
-      alert("Please choose a new category");
-    }
+    $("#newPrice").val(modalListingPrice);
+    $("#newCategory").val(modalListingCategory);
   }
 
   function submitUpdatedListing(event) {

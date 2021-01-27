@@ -30,7 +30,7 @@
                                         <input class="price input" type="text" placeholder="Price"><br><br>
                                     </div>
                                 </div>
-                                <button class="button">Sell It</button>
+                                <button id="sellItBtn" class="button">Sell It</button>
                             </form><br>
                             <button id="home" class="button">Return Home</button>
                             <a style="float: right;" href="/logout">Log Out</a>
@@ -75,7 +75,7 @@
         </div>
         <div class="modal">
             <div class="modal-background"></div>
-            <div class="modal-card">
+            <div class="modal-card" id="sellingModal">
                 <header class="modal-card-head">
                     <p class="modal-card-title">Update Listing</p>
                     <button id="closeModal" class="button is-small">Cancel</button>
@@ -85,9 +85,9 @@
                         {{!-- listing info to update here --}}
                         <input id="newItem" class="input" placeholder="item"><br><br>
                         <input id="newDescription" class="input" placeholder="description"><br><br>
-                        <input id="newPrice" class="input" placeholder="price"><br><br>
+                        <input type="number" id="newPrice" class="input" placeholder="price"><br><br>
                         <div class="select">
-                            <select class="newCategory">
+                            <select id="newCategory">
                                 <option>Appliances</option>
                                 <option>Apps &amp; Games</option>
                                 <option>Automotive &amp; Parts</option>
@@ -101,7 +101,7 @@
                                 <option>Miscellaneous</option>
                             </select>
                         </div>
-                        <button class="button is-success" style="float: right;">Save changes</button>
+                        <button id="updateModalBtn" class="button is-success" style="float: right;">Save changes</button>
                     </form>
                 </section>
             </div>

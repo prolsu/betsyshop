@@ -1,0 +1,28 @@
+body,
+html {
+    background-color: antiquewhite;
+    font-family: 'Playfair Display', serif;
+}
+
+#homeTitle {
+    font-size: 500%;
+}
+
+#sellingModal {
+    border-radius: 8px;
+}
+
+#updateModalBtn,
+#sellItBtn,
+.submitBuySearch,
+.buyBtn {
+    background-color: rgb(106, 169, 221);
+    color: whitesmoke;
+    font-weight: 500;
+}
+
+.updateBtn,
+.deleteBtn,
+#home {
+    background-color: whitesmoke;
+}
