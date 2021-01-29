@@ -24,8 +24,8 @@
                                 </div>
                                 <br><br>
                                 <input class="item input" type="text" placeholder="Item"><br><br>
-                                <input class="description input " type="text" placeholder="Description"><br><br>
-                                <input class="price input" type="number" placeholder="Price"><br><br>
+                                <input class="description input" type="text" placeholder="Description"><br><br>
+                                <input class="price input" type="number" step="0.01" min="0.01" placeholder="Price"><br><br>
                                 <button class="sellItBtn button">Sell It</button>
                             </form><br>
                             <button id="home" class="button">Return Home</button>
@@ -81,7 +81,7 @@
                         {{!-- listing info to update here --}}
                         <input id="newItem" class="input" placeholder="item"><br><br>
                         <input id="newDescription" class="input" placeholder="description"><br><br>
-                        <input type="number" id="newPrice" class="input" placeholder="price"><br><br>
+                        <input type="number" step="0.01" min="0.01" id="newPrice" class="input" placeholder="price"><br><br>
                         <div class="select">
                             <select id="newCategory">
                                 <option>Appliances</option>

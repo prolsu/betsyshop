@@ -6,7 +6,8 @@ $(document).ready(() => {
   $(document).on("click", "#home", takeMeHome);
   $(document).on("submit", "#submitSell", submitListing);
 
-  function submitListing() {
+  function submitListing(event) {
+    event.preventDefault();
     const newItemToSell = {
       item: $(".item")
         .val()
@@ -34,7 +35,7 @@ $(document).ready(() => {
         type: "POST",
         data: newItemToSell
       }).then(() => {
-        location.reload();
+        window.location.reload();
       });
     }
   }

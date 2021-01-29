@@ -163,11 +163,11 @@ module.exports = function(app) {
 
         const transporter = nodemailer.createTransport({
           host: "smtp.gmail.com",
-          port: 465,
           secure: true,
           auth: {
             type: "login",
-            user: "betsyecomm@gmail.com"
+            user: "betsyecomm@gmail.com",
+            pass: "-2|Iiph.zZ7Hrs671{u+? }rhkPrmWLnymu,s JT87!kl^9,1A"
           }
         });
         const mailOptions = {

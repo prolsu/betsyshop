@@ -27,7 +27,6 @@ module.exports = function(app) {
     if (req.user) {
       res.render("home");
     }
-    res.render("login");
   });
 
   app.get("/buying", (req, res) => {

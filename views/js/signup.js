@@ -1,6 +1,6 @@
 $(document).ready(() => {
   $(document).on("submit", "#signup", submitUserSignUp);
-  $(document).on("click", "#closeAlertModal", redirectToLogin);
+  $(document).on("click", "#loginFromModal", redirectToLogin);
 
   const emailInput = $("#email-input");
   const passwordInput = $("#password-input");
@@ -27,10 +27,7 @@ $(document).ready(() => {
       password: password
     })
       .then(() => {
-        // if (!err) {
         window.location.replace("/home");
-        // }
-        // If there's an error, handle it by throwing up a bulma alert
       })
       .catch(handleLoginErr);
   }

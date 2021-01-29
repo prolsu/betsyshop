@@ -5,7 +5,7 @@ html {
 }
 
 #homeTitle {
-    font-size: 500%;
+    font-size: 555%;
 }
 
 #sellingModal {
@@ -23,6 +23,8 @@ html {
 
 .updateBtn,
 .deleteBtn,
+.buy,
+.sell,
 #home {
     background-color: whitesmoke;
 }
