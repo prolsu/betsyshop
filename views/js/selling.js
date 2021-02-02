@@ -111,7 +111,7 @@ $(document).ready(() => {
       .val()
       .trim();
 
-    const newCategory = $(".newCategory").val();
+    const newCategory = $("#newCategory").val();
 
     const newItemInfo = {
       item: newItem,
